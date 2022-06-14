@@ -4,10 +4,18 @@
 </head>
 <body>
 <h1>DVDStore : Ajout d'un film</h1>
-<form method="post" th:object="${movie}" th:action="@{/movie}">
+<form method="post" th:object="${movieForm}" th:action="@{/movie}">
     <p>Titre <input type="text" th:field="*{title}" /></p>
-    <p>Genre <input type="text" th:field="*{genre}" /></p>
-    <p>Description <input type="text" th:field="*{description}" /></p>
+    <select th:field="*{genre}">
+        <option th:value="COMEDIE" th:text="Comédie"></option>
+        <option th:value="HORREUR" th:text="Horreur"></option>
+        <option th:value="THRILLER" th:text="Thriller"></option>
+        <option th:value="ACTION" th:text="Action"></option>
+        <option th:value="ROMANTIQUE" th:text="Romantique"></option>
+        <option th:value="DRAME" th:text="Drame"></option>
+        <option th:value="ANIMATION" th:text="Animation"></option>
+    </select>
+    <p>Description <input type="textarea" th:field="*{description}" /></p>
     <input type="submit" value="OK" />
 </form>
 </body>

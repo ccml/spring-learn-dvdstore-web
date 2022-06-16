@@ -1,4 +1,4 @@
-package com.mycompany.dvdstore.web.controller;
+package com.mycompany.dvdstore.web.api;
 
 import com.mycompany.dvdstore.core.entity.Movie;
 import com.mycompany.dvdstore.core.service.MovieServiceInterface;
@@ -10,10 +10,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/movie")
-public class MovieController {
+public class MovieResource {
 
     @Autowired
     private MovieServiceInterface movieService;
@@ -25,26 +26,19 @@ public class MovieController {
     public void setMovieService(MovieServiceInterface movieService) {
         this.movieService = movieService;
     }
-/*
+
+    @GetMapping()
+    public List<Movie> list() {
+        return movieService.getMovieList();
+    }
+
     @GetMapping("/{id}")
-    public String displayMovieCard(@PathVariable("id") Long id, Model model) {
-        Movie movie = movieService.getMovieById(id);
-        model.addAttribute("movie", movie);
-        return "movie-details";
+    public Movie get(@PathVariable("id") Long id) {
+        return movieService.getMovieById(id);
     }
 
     @PostMapping()
-    public String addMovie(@Valid @ModelAttribute MovieForm movieForm, BindingResult results) {
-        if(results.hasErrors()) {
-            return "add-movie-form";
-        } else {
-            Movie movie = new Movie();
-            movie.setTitle(movieForm.getTitle());
-            movie.setGenre(movieForm.getGenre());
-            movie.setDescription(movieForm.getDescription());
-            movieService.registerMovie(movie);
-            return "movie-added";
-        }
+    public Movie addMovie(@RequestBody Movie movie) {
+        return movieService.registerMovie(movie);
     }
- */
 }

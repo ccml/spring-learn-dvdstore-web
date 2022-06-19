@@ -12,6 +12,11 @@ public class MovieForm {
     private String genre;
     @Size(max = 255, message = "Entrez une description de 255 caractères au plus")
     private String description;
+    @NotBlank
+    @Size(min = 1, max = 20)
+    private String actorFirstName;
+    @Size(max = 20)
+    private String actorLastName;
 
     public String getTitle() {
         return title;
@@ -43,5 +48,21 @@ public class MovieForm {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getActorFirstName() {
+        return actorFirstName;
+    }
+
+    public void setActorFirstName(String actorFirstName) {
+        this.actorFirstName = actorFirstName;
+    }
+
+    public String getActorLastName() {
+        return actorLastName;
+    }
+
+    public void setActorLastName(String actorLastName) {
+        this.actorLastName = actorLastName;
     }
 }

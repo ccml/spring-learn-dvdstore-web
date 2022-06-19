@@ -19,6 +19,10 @@
     <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
     <p>Description <textarea style="height: 100px" th:field="*{description}" /></p>
     <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+    <p>Prénom de l'acteur <input type="text" style="height: 100px" th:field="*{actorFirstName}" /></p>
+    <div th:if="${#fields.hasErrors('actorFirstName')}" th:errors="*{actorFirstName}"></div>
+    <p>Nom de l'acteur <input type="text" style="height: 100px" th:field="*{actorLastName}" /></p>
+    <div th:if="${#fields.hasErrors('actorLastName')}" th:errors="*{actorLastName}"></div>
     <input type="submit" value="OK" />
 </form>
 </body>
